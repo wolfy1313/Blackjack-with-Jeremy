@@ -281,7 +281,9 @@ const deck =[
 ]
 
 const dealGame = () => {
-  console.log(deck[Math.floor(Math.random()*deck.length)]); 
+  playerHand.push(deck[Math.floor(Math.random()*deck.length)]);
+  playerHand.push(deck[Math.floor(Math.random()*deck.length)]);
+  console.log(playerHand) 
 }
 
 
