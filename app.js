@@ -1,6 +1,7 @@
 const playerScore = document.getElementById('playerScoreBoard')
 const dealerScore = document.getElementById('dealerScoreBoard')
 const pushScore = document.getElementById('pushScoreBoard')
+const dealButton = document.getElementById('deal')
 
 let playerWins = 0
 let dealerWins = 0
@@ -276,6 +277,12 @@ const deck =[
     name: '2 of Hearts',
     value: 2,
     suit: 'hearts'
-  },hearts
+  },
 ]
 
+const dealGame = () => {
+  console.log(deck[Math.floor(Math.random()*deck.length)]); 
+}
+
+
+dealButton.addEventListener('click', dealGame)
