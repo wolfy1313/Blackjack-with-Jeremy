@@ -3,8 +3,10 @@
 ### By: Jeremy Harrell
 #### [GitHub](https://github.com/wolfy1313) | [LinkedIn](https://www.linkedin.com/in/jeremy-harrell-67a46a229/) | [Spotify](https://open.spotify.com/artist/3orDENaFfgt5gcLk24QHSS)
 ***
+### ***[TrelloBoard](https://trello.com/b/MDNOtAAI)***
+***
 ### ***Game Overview***
-#### This is a simplified 2-player game of Blackjack. The object of the game is to beat the dealer by getting a count as close to 21 as possible, without going over 21. The rules of which are listed below.
+#### This is a simplified 2-player game of Blackjack. The object of the game is to beat the dealer(other player?) by getting a count as close to 21 as possible, without going over 21. The rules of which are listed below.
 #### **Rules from [BicycleCards.com](https://bicyclecards.com/how-to-play/blackjack)
 ***
 ### ***Rules***
@@ -23,7 +25,8 @@
   * If the dealer has an ace, and counting it as 11 would bring the total to 17 or more (but not over 21), the dealer must count the ace as 11 and stand.  
 ***
 ### ***Getting Started***
-#### I am just getting started
+#### Click the button on the splash page to begin!
+#### Once clicked, the button takes you to the html gameplay page. 
 
 ![A Picture](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_r5Y3_wya7Uo3TdSvhDuYu0f5PSvauJSvmw&usqp=CAU)
 ***
@@ -37,6 +40,9 @@
 [ ] ~~Run From Room Screaming~~
 ***
 ### ***Credits***
+
+Rules from [BicycleCards.com](https://bicyclecards.com/how-to-play/blackjack)
+
 Ace Photo: [Amazon](https://www.amazon.com/BIERDORF-Diamond-Waterproof-Black-Playing/dp/B07LBNDHPH) 
 
 Markdown Guide: [Markdownguide.org](https://ia.net/writer/support/general/markdown-guide)
