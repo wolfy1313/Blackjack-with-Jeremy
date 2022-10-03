@@ -279,12 +279,51 @@ const deck =[
     suit: 'hearts'
   },
 ]
+console.log(deck)
 
+const checkCards = () => {
+  deck.forEach(card => {
+    console.log(card.name)
+  })
+  //logic for checking if card has been dealt yet
+  // if playerHand >0, run checks
+}
+// checkCards()
+const shuffleDeck = () => {
+
+  for (let i = deck.length-1; i>0; i--){
+    const randomDeck = Math.floor(Math.random()* (i+1));
+    [deck[i], deck[randomDeck]] = [deck[randomDeck], deck[i]]
+  } //updated Fisher-Yeats algorithm for shuffling an array
+  
+  // let startDeck = deck.length;
+  // while (0 !== startDeck) {
+  //   let randomDeck = Math.floor(Math.random()*startDeck);
+  //   startDeck -=1;
+  //   let newDeck = deck[startDeck];
+  //   deck[startDeck] = deck[randomDeck]
+  //   deck[randomDeck] = newDeck
+  // }
+}
+shuffleDeck()
+console.log(deck)
 const dealGame = () => {
-  playerHand.push(deck[Math.floor(Math.random()*deck.length)]);
-  playerHand.push(deck[Math.floor(Math.random()*deck.length)]);
-  console.log(playerHand) 
+  shuffleDeck();
+  console.log(deck)
+  playerHand.push(deck.pop());
+  console.log(playerHand)
+  // console.log(deck)
+  playerHand.push(deck.pop());
+  console.log(playerHand)
+  // console.log(deck)
+  dealerHand.push(deck.pop())
+  dealerHand.push(deck.pop())
+  console.log(dealerHand)
+  // console.log(deck)
 }
 
+
+// shuffleDeck()
+// console.log(deck)
 
 dealButton.addEventListener('click', dealGame)
