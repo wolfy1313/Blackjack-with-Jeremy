@@ -19,20 +19,23 @@ let isPlayerTurn = true
 let isDealerTurn = false
 let isWinner = false
 let isPush = false
+let isActiveGame = false
 
 let playerHand = []
 let dealerHand = []
 
-const playerBlackJack = () => {
-  if (playerScore === 21){
-    alert("PLAYER HAS BLACKJACK")
-    isPlayerTurn = !isPlayerTurn
-  } else if (dealerScore === 21) {
-    alert("DEALER HAS BLACKJACK")
-  } else if (playerScore === 21 && dealerScore === 21){
-    alert("DOUBLE BLACKJACK! IT'S A PUSH!")
-  }
-}
+// const playerBlackJack = () => {
+//   if (playerScore === 21){
+//     alert("PLAYER HAS BLACKJACK")
+//     dealerPlay()
+//   } else if (dealerScore === 21) {
+//     alert("DEALER HAS BLACKJACK")
+//     isActiveGame = false
+//   } else if (playerScore === 21 && dealerScore === 21){
+//     alert("DOUBLE BLACKJACK! IT'S A PUSH!")
+//     isActiveGame = false
+//   }
+// }
 
 const checkWin = () => {
   if (playerScore > 0 && dealerScore === 0) {
@@ -42,31 +45,55 @@ const checkWin = () => {
   alert("PLAYER WINS!");
   playerWins++
   playerTally.innerText = playerWins
+  isActiveGame = false
 } else if (playerScore > 21 && dealerScore <= 21){
   alert ("DEALER WINS!");
   dealerWins++;
   dealerTally.innerText = dealerWins
+  isActiveGame = false
 } else if (playerScore === 21 && dealerScore === 21){
   alert("IT'S A PUSH!")
   pushWins++;
   pushTally.innerText = pushWins
+  isActiveGame = false
 }
-}
-
-const checkBust = () => {
-  if (playerScore > 21) {
-    alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN")
+  else if (playerScore === 21){
+    alert("PLAYER HAS BLACKJACK")
+    dealerPlay()
+  } else if (dealerScore === 21) {
+    alert("DEALER HAS BLACKJACK")
+    isActiveGame = false
+  } else if (playerScore === 21 && dealerScore === 21){
+    alert("DOUBLE BLACKJACK! IT'S A PUSH!")
+    isActiveGame = false
+  } else if (playerScore > 21) {
+    alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN");
+    isActiveGame = false
   } else if (dealerScore > 21) {
     alert("DEALER BUSTS, PLAYER WINS")
+    isActiveGame = false
   }
 }
 
+
+// const checkBust = () => {
+//   if (playerScore > 21) {
+//     alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN");
+//     isActiveGame = false
+//   } else if (dealerScore > 21) {
+//     alert("DEALER BUSTS, PLAYER WINS")
+//     isActiveGame = false
+//   }
+// }
+
 const checkAce = () => {
-  if (playerScore >=12) {
-    if (deck.name === 'Ace'){
-      deck.value === 1
+  if (playerScore >=11) {
+    for (card of deck) {
+      if (card.name === 'Ace'){
+        card.value === 1
+      }
     }
-  }else 
+  }
   return
 }
 
@@ -333,7 +360,6 @@ const deck =[
     suit: 'hearts'
   },
 ]
-console.log(deck)
 
 const shuffleDeck = () => {
   for (let i = deck.length-1; i>0; i--){
@@ -351,38 +377,47 @@ const countCards = () => {
   dealerHand.forEach(dCard => {
     dealerScore += dCard.value
   })
-  playerBlackJack()
+  checkWin()
 }
 
 const dealGame = () => {
-
+  console.log("inside dealGame", isActiveGame)
+  if (isActiveGame){
+    return
+  }
+  
   shuffleDeck();
   playerHand.push(deck.pop());
   playerHand.push(deck.pop());
   countCards()
-  checkBust()
-  console.log(playerScore)
-  console.log(playerHand)
+  // checkBust()
+  console.log("playerScore", playerScore)
+  console.log("playerHand", playerHand)
 
   dealerHand.push(deck.pop())
   dealerHand.push(deck.pop())
   countCards()
   checkWin()
-  console.log(dealerScore)
-  console.log(dealerHand)
+  console.log("dealerScore", dealerScore)
+  console.log("dealerHand", dealerHand)
+
+  isActiveGame = true
   // console.log(dealerHand)
 }
 
 // countCards()
 
 const playerHit = () => {
+  if (!isPlayerTurn) {
+    return
+  }
   checkAce()
   playerHand.push(deck.pop())
   countCards()
-  checkBust()
+  // checkBust()
   checkWin()
-  console.log(playerScore)
-  console.log(playerHand)
+  console.log("playerHit, playerScore", playerScore)
+  console.log("playerHitHand, playerHand", playerHand)
 }
 
 
@@ -392,20 +427,35 @@ const playerHit = () => {
 // }
 
 const dealerPlay = () => {
+  isPlayerTurn = false
+  console.log("dealerPlay, playerScore", playerScore)
+  console.log("dealerPlay, dealerScore", dealerScore)
+  if (playerScore < dealerScore){
+    alert("DEALER WINS HIT PLAY AGAIN TO PLAY...AGAIN")
+    isActiveGame = false
+    return
+  }
   if (playerScore <= 21 && dealerScore <17) {
     dealerHand.push(deck.pop())
     countCards()
-    checkBust()
+    // checkBust()
     checkWin()
-    console.log(dealerHand)
+    console.log("dealerHand", dealerHand)
   } else if (playerScore > dealerScore && dealerScore >= 17) {
     alert("PLAYER WINS!");
   playerWins++
   playerTally.innerText = playerWins
   }
+  if (dealerScore<17) {
+    dealerPlay()
+  }
+  else {
+    checkWin()
+  }
 }
 
 const resetGame = () => {
+  isActiveGame = false
   playerScore = 0
   dealerScore = 0
   isPlayerTurn = true
@@ -417,7 +467,7 @@ const resetGame = () => {
 }
 
 
-dealButton.addEventListener('click', dealGame, {once: true})
+dealButton.addEventListener('click', dealGame)
 hitButton.addEventListener('click', playerHit)
-stayButton.addEventListener('click', dealerPlay, {once: true})
+stayButton.addEventListener('click', dealerPlay)
 resetButton.addEventListener('click', resetGame)
