@@ -15,8 +15,6 @@ let pushWins = 0
 let playerScore = 0
 let dealerScore = 0
 
-
-
 let isPlayerTurn = true
 let isDealerTurn = false
 let isWinner = false
@@ -31,21 +29,45 @@ const playerBlackJack = () => {
     isPlayerTurn = !isPlayerTurn
   } else if (dealerScore === 21) {
     alert("DEALER HAS BLACKJACK")
+  } else if (playerScore === 21 && dealerScore === 21){
+    alert("DOUBLE BLACKJACK! IT'S A PUSH!")
   }
+}
+
+const checkWin = () => {
+  if (playerScore > 0 && dealerScore === 0) {
+    return
+  }
+  else if (playerScore <= 21 && dealerScore >21){
+  alert("PLAYER WINS!");
+  playerWins++
+  playerTally.innerText = playerWins
+} else if (playerScore > 21 && dealerScore <= 21){
+  alert ("DEALER WINS!");
+  dealerWins++;
+  dealerTally.innerText = dealerWins
+} else if (playerScore === 21 && dealerScore === 21){
+  alert("IT'S A PUSH!")
+  pushWins++;
+  pushTally.innerText = pushWins
+}
 }
 
 const checkBust = () => {
   if (playerScore > 21) {
     alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN")
+  } else if (dealerScore > 21) {
+    alert("DEALER BUSTS, PLAYER WINS")
   }
 }
 
 const checkAce = () => {
-  if (playerScore <12) {
-    playerHand.forEach(card => {
-
-    })
-  }
+  if (playerScore >=12) {
+    if (deck.name === 'Ace'){
+      deck.value === 1
+    }
+  }else 
+  return
 }
 
 const deck =[
@@ -321,9 +343,11 @@ const shuffleDeck = () => {
 }
 
 const countCards = () => {
+  playerScore = 0
   playerHand.forEach(pCard => {
-    playerScore = pCard.value
+    playerScore += pCard.value
   });
+  dealerScore = 0
   dealerHand.forEach(dCard => {
     dealerScore += dCard.value
   })
@@ -331,6 +355,7 @@ const countCards = () => {
 }
 
 const dealGame = () => {
+
   shuffleDeck();
   playerHand.push(deck.pop());
   playerHand.push(deck.pop());
@@ -338,21 +363,11 @@ const dealGame = () => {
   checkBust()
   console.log(playerScore)
   console.log(playerHand)
-  // console.log(playerHand[0].value)
-//**put function here to add values of cards to comprise player's total numerical score**
-  // for (let card of playerHand) {
-  //   if (document.getElementById('pCard1')) {
-  //     document.getElementById('pCard1').innerHTML = playerHand[card]
-  //   }
-  // }
-  // for (let card of playerHand) {
-  //   if (document.getElementById('pCard1')) {
-  //     document.getElementById('pCard1').innerHTML = playerHand[card]
-  //   }
-  // }
+
   dealerHand.push(deck.pop())
   dealerHand.push(deck.pop())
   countCards()
+  checkWin()
   console.log(dealerScore)
   console.log(dealerHand)
   // console.log(dealerHand)
@@ -361,17 +376,33 @@ const dealGame = () => {
 // countCards()
 
 const playerHit = () => {
+  checkAce()
   playerHand.push(deck.pop())
   countCards()
   checkBust()
+  checkWin()
   console.log(playerScore)
   console.log(playerHand)
 }
 
 
-const playerStay = () => {
-  isDealerTurn = true
-  console.log(isDealerTurn)
+// const playerStay = () => {
+//   isDealerTurn = true
+//   console.log(isDealerTurn)
+// }
+
+const dealerPlay = () => {
+  if (playerScore <= 21 && dealerScore <17) {
+    dealerHand.push(deck.pop())
+    countCards()
+    checkBust()
+    checkWin()
+    console.log(dealerHand)
+  } else if (playerScore > dealerScore && dealerScore >= 17) {
+    alert("PLAYER WINS!");
+  playerWins++
+  playerTally.innerText = playerWins
+  }
 }
 
 const resetGame = () => {
@@ -386,21 +417,7 @@ const resetGame = () => {
 }
 
 
-// shuffleDeck()
-// console.log(deck)
-
-dealButton.addEventListener('click', dealGame)
+dealButton.addEventListener('click', dealGame, {once: true})
 hitButton.addEventListener('click', playerHit)
-stayButton.addEventListener('click', playerStay)
+stayButton.addEventListener('click', dealerPlay, {once: true})
 resetButton.addEventListener('click', resetGame)
-// () => {
-  // const cards = Object.keys([playerHand])
-  // cards.forEach((card) => {
-  //   const item = document.createElement('div')
-  //   item.classList.add('item')
-  //   item.innerHTML = card
-  //   list.append(item)
-  // })
-  
-
-// })
