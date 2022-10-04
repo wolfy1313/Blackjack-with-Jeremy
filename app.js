@@ -25,6 +25,7 @@ let isPush = false
 let playerHand = []
 let dealerHand = []
 
+
 const deck =[
   {
     name: 'Ace of Spades',
@@ -288,28 +289,33 @@ const deck =[
     suit: 'hearts'
   },
 ]
+console.log(deck)
 
-
-// const checkCards = () => {
-//   deck.forEach(card => {
-//     console.log(card.name)
-//   })
-  //logic for checking if card has been dealt yet
-  // if playerHand >0, run checks
-// }
-// checkCards()
 const shuffleDeck = () => {
   for (let i = deck.length-1; i>0; i--){
     const randomDeck = Math.floor(Math.random()* (i+1));
     [deck[i], deck[randomDeck]] = [deck[randomDeck], deck[i]]
   } //updated Fisher-Yeats algorithm for shuffling an array
 }
+
+const countCards = () => {
+  playerHand.forEach(pCard => {
+    playerScore += pCard.value
+  });
+  dealerHand.forEach(dCard => {
+    dealerScore += dCard.value
+  })
+}
+
 const dealGame = () => {
   shuffleDeck();
   playerHand.push(deck.pop());
   playerHand.push(deck.pop());
-//**put function here to add values of cards to comprise player's total numerical score**
+  countCards()
+  console.log(playerScore)
   console.log(playerHand)
+  // console.log(playerHand[0].value)
+//**put function here to add values of cards to comprise player's total numerical score**
   // for (let card of playerHand) {
   //   if (document.getElementById('pCard1')) {
   //     document.getElementById('pCard1').innerHTML = playerHand[card]
@@ -322,16 +328,22 @@ const dealGame = () => {
   // }
   dealerHand.push(deck.pop())
   dealerHand.push(deck.pop())
+  countCards()
+  console.log(dealerScore)
   // console.log(dealerHand)
 }
 
+// countCards()
+
 const playerHit = () => {
   playerHand.push(deck.pop())
+  countCards()
+  console.log(playerScore)
   console.log(playerHand)
 }
-
 const playerBlackJack = () => {
-  if (playerHand.value === 21){
+  if (playerScore=== 21){
+    alert("Player Wins")
     isPlayerTurn = !isPlayerTurn
   }
 }
@@ -341,6 +353,15 @@ const playerStay = () => {
   console.log(isDealerTurn)
 }
 
+const resetGame = () => {
+  playerScore = 0
+  dealerScore = 0
+  isPlayerTurn = true
+  isDealerTurn = false
+  isWinner = false
+  isPush = false
+}
+
 
 // shuffleDeck()
 // console.log(deck)
@@ -348,6 +369,7 @@ const playerStay = () => {
 dealButton.addEventListener('click', dealGame)
 hitButton.addEventListener('click', playerHit)
 stayButton.addEventListener('click', playerStay)
+resetButton.addEventListener('click', resetGame)
 // () => {
   // const cards = Object.keys([playerHand])
   // cards.forEach((card) => {
