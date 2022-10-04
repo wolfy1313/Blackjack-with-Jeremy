@@ -1,0 +1,28 @@
+#gameplay-body {
+  margin: auto;
+  background-color: green;
+  color:chartreuse;
+}
+h1{
+  display: grid;
+  border: 2px black;
+  border-color: coral;
+  color: blue;
+  align-content: flex-end;
+  justify-content: end;
+}
+.playerCards {
+  background: aqua;
+  border: 100px pink;
+  color: darkviolet;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.gameTally {
+  margin: 12 12 12 12;
+  padding: 10px;
+  border: 10px white;
+  background-color: black;
+  text-align: center;
+}

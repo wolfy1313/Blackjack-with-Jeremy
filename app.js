@@ -1,15 +1,24 @@
-const playerScore = document.getElementById('playerScoreBoard')
-const dealerScore = document.getElementById('dealerScoreBoard')
-const pushScore = document.getElementById('pushScoreBoard')
+const playerTally = document.getElementById('playerScoreBoard')
+const dealerTally = document.getElementById('dealerScoreBoard')
+const pushTally = document.getElementById('pushScoreBoard')
+const playerCards = document.querySelector('pcards')
+
 const dealButton = document.getElementById('deal')
+const hitButton = document.getElementById('hit')
+const stayButton = document.getElementById('stay')
+const resetButton = document.getElementById('reset')
 
 let playerWins = 0
 let dealerWins = 0
 let pushWins = 0
 
-const resetButton = document.getElementById('reset')
+let playerScore = 0
+let dealerScore = 0
+
+
 
 let isPlayerTurn = true
+let isDealerTurn = false
 let isWinner = false
 let isPush = false
 
@@ -279,47 +288,57 @@ const deck =[
     suit: 'hearts'
   },
 ]
-console.log(deck)
 
-const checkCards = () => {
-  deck.forEach(card => {
-    console.log(card.name)
-  })
+
+// const checkCards = () => {
+//   deck.forEach(card => {
+//     console.log(card.name)
+//   })
   //logic for checking if card has been dealt yet
   // if playerHand >0, run checks
-}
+// }
 // checkCards()
 const shuffleDeck = () => {
-
   for (let i = deck.length-1; i>0; i--){
     const randomDeck = Math.floor(Math.random()* (i+1));
     [deck[i], deck[randomDeck]] = [deck[randomDeck], deck[i]]
   } //updated Fisher-Yeats algorithm for shuffling an array
-  
-  // let startDeck = deck.length;
-  // while (0 !== startDeck) {
-  //   let randomDeck = Math.floor(Math.random()*startDeck);
-  //   startDeck -=1;
-  //   let newDeck = deck[startDeck];
-  //   deck[startDeck] = deck[randomDeck]
-  //   deck[randomDeck] = newDeck
-  // }
 }
-shuffleDeck()
-console.log(deck)
 const dealGame = () => {
   shuffleDeck();
-  console.log(deck)
   playerHand.push(deck.pop());
-  console.log(playerHand)
-  // console.log(deck)
   playerHand.push(deck.pop());
+//**put function here to add values of cards to comprise player's total numerical score**
   console.log(playerHand)
-  // console.log(deck)
+  // for (let card of playerHand) {
+  //   if (document.getElementById('pCard1')) {
+  //     document.getElementById('pCard1').innerHTML = playerHand[card]
+  //   }
+  // }
+  // for (let card of playerHand) {
+  //   if (document.getElementById('pCard1')) {
+  //     document.getElementById('pCard1').innerHTML = playerHand[card]
+  //   }
+  // }
   dealerHand.push(deck.pop())
   dealerHand.push(deck.pop())
-  console.log(dealerHand)
-  // console.log(deck)
+  // console.log(dealerHand)
+}
+
+const playerHit = () => {
+  playerHand.push(deck.pop())
+  console.log(playerHand)
+}
+
+const playerBlackJack = () => {
+  if (playerHand.value === 21){
+    isPlayerTurn = !isPlayerTurn
+  }
+}
+
+const playerStay = () => {
+  isDealerTurn = true
+  console.log(isDealerTurn)
 }
 
 
@@ -327,3 +346,16 @@ const dealGame = () => {
 // console.log(deck)
 
 dealButton.addEventListener('click', dealGame)
+hitButton.addEventListener('click', playerHit)
+stayButton.addEventListener('click', playerStay)
+// () => {
+  // const cards = Object.keys([playerHand])
+  // cards.forEach((card) => {
+  //   const item = document.createElement('div')
+  //   item.classList.add('item')
+  //   item.innerHTML = card
+  //   list.append(item)
+  // })
+  
+
+// })

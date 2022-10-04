@@ -4,30 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
   <title>Black Jack Back Room</title>
 </head>
-<body>
+<body id="gameplay-body">
   <header class="backRoomHeader">
     <h1>BACKROOM</h1>
   </header>
-  <section id="dealerCards">
-    <div class="card" id="card1"></div>
-    <div class="card" id="card2"></div>
+  <section class="dealerCards" id="dealerCards">
+    <div class="card" id="dCards"></div>
+    <!-- <div class="card" id="card2"></div>
     <div class="card" id="card3"></div>
     <div class="card" id="card4"></div>
     <div class="card" id="card5"></div>
     <div class="card" id="card6"></div>
-    <div class="card" id="card7"></div>
+    <div class="card" id="card7"></div> -->
   </section>
-  <section id="playerCards">
-    <div class="card" id="card1"></div>
-    <div class="card" id="card2"></div>
-    <div class="card" id="card3"></div>
-    <div class="card" id="card4"></div>
-    <div class="card" id="card5"></div>
-    <div class="card" id="card6"></div>
-    <div class="card" id="card7"></div>
+  <section class="playerCards" id="playerCards">
+    <div class="card" id="pCard1"></div>
+    <div class="card" id="pCard2"></div>
+    <div class="card" id="pCard3"></div>
+    <div class="card" id="pCard4"></div>
+    <div class="card" id="pCard5"></div>
+    <div class="card" id="pCard6"></div>
+    <div class="card" id="pCard7"></div>
     <button id="hit">Hit Me</button>
     <button id="stay">Stay</button>
   </section>
