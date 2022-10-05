@@ -12,7 +12,7 @@ h1{
   justify-content: end;
 }
 .playerCards {
-  background: aqua;
+  background: rgb(14, 158, 9);
   border: 100px pink;
   color: darkviolet;
   display: flex;

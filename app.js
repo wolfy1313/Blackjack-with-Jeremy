@@ -1,7 +1,9 @@
 const playerTally = document.getElementById('playerScoreBoard')
 const dealerTally = document.getElementById('dealerScoreBoard')
 const pushTally = document.getElementById('pushScoreBoard')
-const playerCards = document.querySelector('pcards')
+
+const playerCards = document.querySelector('.playerCardContainer')
+const dealerCards = document.querySelector('.dealerCardContainer')
 
 const dealButton = document.getElementById('deal')
 const hitButton = document.getElementById('hit')
@@ -24,18 +26,7 @@ let isActiveGame = false
 let playerHand = []
 let dealerHand = []
 
-// const playerBlackJack = () => {
-//   if (playerScore === 21){
-//     alert("PLAYER HAS BLACKJACK")
-//     dealerPlay()
-//   } else if (dealerScore === 21) {
-//     alert("DEALER HAS BLACKJACK")
-//     isActiveGame = false
-//   } else if (playerScore === 21 && dealerScore === 21){
-//     alert("DOUBLE BLACKJACK! IT'S A PUSH!")
-//     isActiveGame = false
-//   }
-// }
+
 
 const checkWin = () => {
   if (playerScore > 0 && dealerScore === 0) {
@@ -107,17 +98,6 @@ const checkWin = () => {
   }
 }
 
-
-// const checkBust = () => {
-//   if (playerScore > 21) {
-//     alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN");
-//     isActiveGame = false
-//   } else if (dealerScore > 21) {
-//     alert("DEALER BUSTS, PLAYER WINS")
-//     isActiveGame = false
-//   }
-// }
-
 const checkAce = () => {
   if (playerScore >=11) {
     for (card of deck) {
@@ -135,313 +115,365 @@ const deck =[
     value: 11,
     suit: 'spades',
     id: 'Ace of spades',
-    // art: placeholder,
+    
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Ace',
     value: 11,
     suit: 'clubs',
     id: 'Ace of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Ace',
     value: 11,
     suit: 'hearts',
     id: 'Ace of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Ace',
     value: 11,
     suit: 'diamonds',
     id: 'Ace of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'King',
     value: 10,
     suit: 'clubs',
     id: 'King of  clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Queen',
     value: 10,
     suit: 'clubs',
     id: 'Queen of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Jack',
     value: 10,
     suit: 'clubs',
     id: 'Jack of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '10',
     value: 10,
     suit: 'clubs',
     id: '10 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '9',
     value: 9,
     suit: 'clubs',
     id: '9 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '8',
     value: 8,
     suit: 'clubs',
     id: '8 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '7',
     value: 7,
     suit: 'clubs',
     id: '7 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '6',
     value: 6,
     suit: 'clubs',
     id: '6 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '5',
     value: 5,
     suit: 'clubs',
     id: '5 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '4',
     value: 4,
     suit: 'clubs',
     id: '4 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '3',
     value: 3,
     suit: 'clubs',
     id: '3 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '2',
     value: 2,
     suit: 'clubs',
     id: '2 of clubs',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'King',
     value: 10,
     suit: 'spades',
     id: 'King of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Queen',
     value: 10,
     suit: 'spades',
     id: 'Queen of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Jack',
     value: 10,
     suit: 'spades',
     id: 'Jack of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '10',
     value: 10,
     suit: 'spades',
     id: '10 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '9',
     value: 9,
     suit: 'spades',
     id: '9 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '8',
     value: 8,
     suit: 'spades',
     id: '8 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '7',
     value: 7,
     suit: 'spades',
     id: '7 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '6',
     value: 6,
     suit: 'spades',
     id: '6 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '5',
     value: 5,
     suit: 'spades',
     id: '5 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '4',
     value: 4,
     suit: 'spades',
     id: '4 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '3',
     value: 3,
     suit: 'spades',
     id: '3 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '2',
     value: 2,
     suit: 'spades',
     id: '2 of spades',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'King',
     value: 10,
     suit: 'diamonds',
     id: 'King of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Queen',
     value: 10,
     suit: 'diamonds',
     id: 'Queen of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Jack',
     value: 10,
     suit: 'diamonds',
     id: 'Jack of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '10',
     value: 10,
     suit: 'diamonds',
     id: '10 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '9',
     value: 9,
     suit: 'diamonds',
     id: '9 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '8',
     value: 8,
     suit: 'diamonds',
     id: '8 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '7',
     value: 7,
     suit: 'diamonds',
     id: '7 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '6',
     value: 6,
     suit: 'diamonds',
     id: '6 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '5',
     value: 5,
     suit: 'diamonds',
     id: '5 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '4',
     value: 4,
     suit: 'diamonds',
     id: '4 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '3',
     value: 3,
     suit: 'diamonds',
     id: '3 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '2',
     value: 2,
     suit: 'diamonds',
     id: '2 of diamonds',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'King',
     value: 10,
     suit: 'hearts',
     id: 'King of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Queen',
     value: 10,
     suit: 'hearts',
     id: 'Queen of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: 'Jack',
     value: 10,
     suit: 'hearts',
     id: 'Jack of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '10',
     value: 10,
     suit: 'hearts',
     id: '10 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '9',
     value: 9,
     suit: 'hearts',
     id: '9 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '8',
     value: 8,
     suit: 'hearts',
     id: '8 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '7',
     value: 7,
     suit: 'hearts',
     id: '7 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '6',
     value: 6,
     suit: 'hearts',
     id: '6 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '5',
     value: 5,
     suit: 'hearts',
     id: '5 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '4',
     value: 4,
     suit: 'hearts',
     id: '4 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '3',
     value: 3,
     suit: 'hearts',
     id: '3 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
   {
     name: '2',
     value: 2,
     suit: 'hearts',
     id: '2 of hearts',
+    art: 'assets/playing-cards-vector-free-483402.jpeg',
   },
 ]
 
@@ -472,6 +504,12 @@ const dealGame = () => {
     shuffleDeck();
     playerHand.push(deck.pop());
     playerHand.push(deck.pop());
+    playerHand.forEach((card) => {
+      const newCard = document.createElement('img')
+      newCard.classList.add('pcard')
+      newCard.src = card.art
+      playerCards.append(newCard)
+    })
     countCards()
     // checkBust()
     console.log("playerScore", playerScore)
@@ -479,15 +517,21 @@ const dealGame = () => {
 
     dealerHand.push(deck.pop())
     dealerHand.push(deck.pop())
+    dealerHand.forEach((card) => {
+      const newCard = document.createElement('img')
+      newCard.classList.add('pcard')
+      newCard.src = card.art
+      playerCards.append(newCard)
+    })
     countCards()
     console.log("dealerScore", dealerScore)
     console.log("dealerHand", dealerHand)
 
     isActiveGame = true
+    dealButton.removeEventListener('click', dealGame)
   // console.log(dealerHand)
 }
 
-// countCards()
 
 const playerHit = () => {
   dealButton.removeEventListener('click', dealGame)
@@ -503,11 +547,6 @@ const playerHit = () => {
 }
 
 
-// const playerStay = () => {
-//   isPlayerTurn = false;
-//   isActiveGame = true
-//   console.log(isDealerTurn)
-// }
 
 const dealerPlay = () => {
   dealButton.removeEventListener('click', dealGame)
@@ -562,6 +601,8 @@ const resetGame = () => {
   isPush = false
   playerHand = []
   dealerHand= []
+  playerCards.innerHTML = ''
+  dealerCards.innerHTML = ''
 }
 
 
@@ -573,3 +614,37 @@ resetButton.addEventListener('click', resetGame)
 
 // put event listeners in a function and run them when you start the game, don't add event listeners until you start the game. this way I can put in the once:true
 // dealButton.removeEventListener
+
+
+// const playerBlackJack = () => {
+//   if (playerScore === 21){
+//     alert("PLAYER HAS BLACKJACK")
+//     dealerPlay()
+//   } else if (dealerScore === 21) {
+//     alert("DEALER HAS BLACKJACK")
+//     isActiveGame = false
+//   } else if (playerScore === 21 && dealerScore === 21){
+//     alert("DOUBLE BLACKJACK! IT'S A PUSH!")
+//     isActiveGame = false
+//   }
+// }
+
+
+// const playerStay = () => {
+//   isPlayerTurn = false;
+//   isActiveGame = true
+//   console.log(isDealerTurn)
+// }
+
+// const checkBust = () => {
+//   if (playerScore > 21) {
+//     alert("PLAYER BUSTED AND GAME IS OVER CLICK PLAY AGAIN");
+//     isActiveGame = false
+//   } else if (dealerScore > 21) {
+//     alert("DEALER BUSTS, PLAYER WINS")
+//     isActiveGame = false
+//   }
+// }
+
+
+//download card images an assets fol
