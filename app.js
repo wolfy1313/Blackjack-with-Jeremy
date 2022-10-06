@@ -507,6 +507,7 @@ const dealGame = () => {
   }
     shuffleDeck();
     playerHand.push(deck.pop());
+    checkAce();
     playerHand.push(deck.pop());
     playerHand.forEach((card) => {
       const newCard = document.createElement('img')
@@ -519,13 +520,14 @@ const dealGame = () => {
     console.log("playerScore", playerScore)
     console.log("playerHand", playerHand)
 
-    dealerHand.push(deck.pop())
+    dealerHand.push(deck.pop());
+    checkAce();
     dealerHand.push(deck.pop())
     dealerHand.forEach((card) => {
       const newCard = document.createElement('img')
-      newCard.classList.add('pcard')
+      newCard.classList.add('dcard')
       newCard.src = card.art
-      playerCards.append(newCard)
+      dealerCards.append(newCard)
     })
     countCards()
     console.log("dealerScore", dealerScore)
@@ -543,6 +545,7 @@ const playerHit = () => {
     return
   }
   checkAce()
+  playerCards.innerHTML = ''
   playerHand.push(deck.pop());
   playerHand.forEach((card) => {
     const newCard = document.createElement('img')
@@ -582,20 +585,28 @@ const dealerPlay = () => {
     pushTally.innerText = pushWins
     isActiveGame = false
     return
+  } else if (playerScore > dealerScore && dealerScore >= 17) {
+    alert ("PLAYER WINS")
+    playerWins++
+    playerWin.innerText = playerWins
+    isActiveGame = false
+    return
   }
   else if (playerScore <= 21 && dealerScore <17) {
+    dealerCards.innerHTML = ''
     dealerHand.push(deck.pop())
     dealerHand.forEach((card) => {
       const newCard = document.createElement('img')
       newCard.classList.add('pcard')
       newCard.src = card.art
-      playerCards.append(newCard)
+      dealerCards.append(newCard)
     })
     countCards()
     dealerPlay()
     // checkBust()
     console.log("dealerHand", dealerHand)
   } else if (playerScore > dealerScore && dealerScore <17) {
+    dealerCards.innerHTML = ''
     dealerHand.push(deck.pop())
     dealerHand.forEach((card) => {
       const newCard = document.createElement('img')
