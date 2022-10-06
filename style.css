@@ -18,6 +18,14 @@ h1{
   display: flex;
   justify-content: flex-start;
 }
+.playerCardContainer{
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.dealerCards {
+  background: rgb(17, 90, 17);
+}
 
 .gameTally {
   margin: 12 12 12 12;
