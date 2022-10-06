@@ -1,36 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Silkscreen', cursive;
+  background-color: green;
+  color:chartreuse;
+}
 #gameplay-body {
-  margin: auto;
+  margin: 0;
+  font-family: 'Silkscreen', cursive;
   background-color: green;
   color:chartreuse;
 }
 h1{
-  display: grid;
-  border: 2px black;
-  border-color: coral;
-  color: blue;
-  align-content: flex-end;
-  justify-content: end;
+  margin: 20px auto;
+  text-align: center;
+  font-family: 'Silkscreen', cursive;
+  font-size: 5vh;
+  text-shadow: 2px 2px black ;
+  background: firebrick;
+  width: 90vw;
+  border: 2px dotted rgb(213, 151, 129);
+  color: rgb(234, 7, 7);
+  background-image: url("assets/Poker-Table-1024x603.jpeg");
+  /* found this capability on w3schools */
+  text-decoration:underline;
+  padding: 20px;
+}
+#indexButton {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto; 
+  align-items: center;
+  font-family: 'Silkscreen', cursive;
+  cursor: pointer;
+  border: 10px dotted rgb(174, 163, 8);
+  background: rgb(200, 19, 58);
+}
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Silkscreen', cursive;
+  cursor: pointer;
+
 }
 .playerCards {
-  background: rgb(14, 158, 9);
-  border: 100px pink;
-  color: darkviolet;
+  background: rgb(17, 90, 17);
+  color: rgb(33, 231, 92);
+}
+.cardContainer {
+  height: 30vh;
+}
+.dealerCardContainer{
+  margin: 0;
   display: flex;
-  justify-content: flex-start;
+  height: 25vh;
+  grid-template-columns: repeat(5, 1fr);
+  border: 5px solid rgb(98, 33, 33);
+  background: rgb(6, 42, 6);
+  background-image: url("assets/joker cards.jpg");
 }
 .playerCardContainer{
-  margin: auto;
-  display: grid;
+  margin: 0;
+  display: flex;
+  height: 25vh;
   grid-template-columns: repeat(5, 1fr);
+  border: 5px solid rgb(111, 70, 63);
+  background: rgb(6, 42, 6);
+  background-image: url("assets/joker cards.jpg");
+}
+.pcard{
+  display: grid;
+  background: white;
+  border: 1px solid black;
+}
+.dcard {
+  display: grid;
+  background: white;
+  border: 1px solid black;
 }
 .dealerCards {
   background: rgb(17, 90, 17);
 }
 
 .gameTally {
-  margin: 12 12 12 12;
-  padding: 10px;
-  border: 10px white;
-  background-color: black;
-  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 10px auto;
+  height: 10vh;
+  width: 90vw;
+  /* margin: 12 12 12 12; */
+  padding: 5px;
+  border: 10px dotted rgb(226, 233, 9);
+  color: rgb(249, 246, 246);
+  font-weight: bolder;
+  background-color: rgb(8, 0, 0);
+  text-align:center;
+  font-family: 'Silkscreen', cursive;
 }
