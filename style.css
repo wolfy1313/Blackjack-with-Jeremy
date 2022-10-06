@@ -4,11 +4,15 @@ body {
   background-color: green;
   color:chartreuse;
 }
+#indexBody{
+  background-image: url("assets/big black background.jpeg");
+}
 #gameplay-body {
   margin: 0;
   font-family: 'Silkscreen', cursive;
   background-color: green;
   color:chartreuse;
+
 }
 h1{
   margin: 20px auto;
