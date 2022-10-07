@@ -64,11 +64,11 @@ h1{
   margin: 0 auto; 
   align-items: center;
   font-family: 'Silkscreen', cursive;
-  color: greenyellow;
-  text-shadow: 2px 2px black;
+  color: yellow;
+  text-shadow: 1px 1px goldenrod;
   font-size: larger;
   cursor: pointer;
-  border: 10px dotted rgb(174, 163, 8);
+  border: 10px dotted rgb(230, 16, 16);
   background: black;
 }
 
