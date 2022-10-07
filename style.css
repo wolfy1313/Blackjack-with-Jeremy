@@ -69,7 +69,7 @@ h1{
   font-size: larger;
   cursor: pointer;
   border: 10px dotted rgb(174, 163, 8);
-  background: rgb(200, 19, 58);
+  background: black;
 }
 
 button {
